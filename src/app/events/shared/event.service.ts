@@ -1,27 +1,28 @@
 import { Injectable } from '@angular/core';
-import { Subject } from 'rxjs';
+import { Observable, Subject } from 'rxjs';
+import { IEvent } from './event.model';
 
 @Injectable()
 export class EventService {
-  getEvents() {
-    let subject = new Subject()
+  getEvents(): Observable<IEvent[]> {
+    let subject = new Subject<IEvent[]>();
     setTimeout(() => {
       subject.next(EVENTS);
-      subject.complete()
+      subject.complete();
     }, 100);
     return subject;
   }
 
-  getEvent(id:number) {
-    return EVENTS.find(event => event.id === id);
+  getEvent(id: number): IEvent {
+    return EVENTS.find((event) => event.id === id);
   }
 }
 
-const EVENTS = [
+const EVENTS: IEvent[] = [
   {
     id: 1,
     name: 'Angular Connect',
-    date: '9/26/2036',
+    date: new Date('9/26/2036'),
     time: '10:00 am',
     price: 599.99,
     imageUrl: '/assets/images/angularconnect-shield.png',
@@ -35,7 +36,7 @@ const EVENTS = [
         id: 1,
         name: 'Using Angular 4 Pipes',
         presenter: 'Peter Bacon Darwin',
-        duration: 1,
+        duration: '1',
         level: 'Intermediate',
         abstract: `Learn all about the new pipes in Angular 4, both 
               how to write them, and how to get the new AI CLI to write 
@@ -47,7 +48,7 @@ const EVENTS = [
         id: 2,
         name: 'Getting the most out of your dev team',
         presenter: 'Jeff Cross',
-        duration: 1,
+        duration: '1',
         level: 'Intermediate',
         abstract: `We all know that our dev teams work hard, but with 
               the right management they can be even more productive, without 
@@ -59,7 +60,7 @@ const EVENTS = [
         id: 3,
         name: 'Angular 4 Performance Metrics',
         presenter: 'Rob Wormald',
-        duration: 2,
+        duration: '2',
         level: 'Advanced',
         abstract: `Angular 4 Performance is hot. In this session, we'll see 
               how Angular gets such great performance by preloading data on 
@@ -72,7 +73,7 @@ const EVENTS = [
         id: 4,
         name: 'Angular 5 Look Ahead',
         presenter: 'Brad Green',
-        duration: 2,
+        duration: '2',
         level: 'Advanced',
         abstract: `Even though Angular 5 is still 6 years away, we all want 
               to know all about it so that we can spend endless hours in meetings 
@@ -86,7 +87,7 @@ const EVENTS = [
         id: 5,
         name: 'Basics of Angular 4',
         presenter: 'John Papa',
-        duration: 2,
+        duration: '2',
         level: 'Beginner',
         abstract: `It's time to learn the basics of Angular 4. This talk 
               will give you everything you need to know about Angular 4 to 
@@ -99,7 +100,7 @@ const EVENTS = [
   {
     id: 2,
     name: 'ng-nl',
-    date: '4/15/2037',
+    date: new Date('4/15/2037'),
     time: '9:00 am',
     price: 950.0,
     imageUrl: '/assets/images/ng-nl.png',
@@ -108,7 +109,7 @@ const EVENTS = [
         id: 1,
         name: 'Testing Angular 4 Workshop',
         presenter: 'Pascal Precht & Christoph Bergdorf',
-        duration: 4,
+        duration: '4',
         level: 'Beginner',
         abstract: `In this 6 hour workshop you will learn not only how to test Angular 4, 
               you will also learn how to make the most of your team's efforts. Other topics
@@ -120,7 +121,7 @@ const EVENTS = [
         id: 2,
         name: 'Angular 4 and Firebase',
         presenter: 'David East',
-        duration: 3,
+        duration: '3',
         level: 'Intermediate',
         abstract: `In this workshop, David East will show you how to use Angular with the new
               ultra-real-time 5D Firebase back end, hosting platform, and wine recommendation engine.`,
@@ -130,7 +131,7 @@ const EVENTS = [
         id: 3,
         name: 'Reading the Angular 4 Source',
         presenter: 'Patrick Stapleton',
-        duration: 2,
+        duration: '2',
         level: 'Intermediate',
         abstract: `Angular 4's source code may be over 25 million lines of code, but it's really 
               a lot easier to read and understand then you may think. Patrick Stapleton will talk
@@ -141,7 +142,7 @@ const EVENTS = [
         id: 4,
         name: 'Hail to the Lukas',
         presenter: 'Lukas Ruebbelke',
-        duration: 1,
+        duration: '1',
         level: 'Beginner',
         abstract: `In this session, Lukas will present the 
               secret to being awesome, and how he became the President 
@@ -155,7 +156,7 @@ const EVENTS = [
   {
     id: 3,
     name: 'ng-conf 2037',
-    date: '5/4/2037',
+    date: new Date('5/4/2037'),
     time: '9:00 am',
     price: 759.0,
     imageUrl: '/assets/images/ng-conf.png',
@@ -169,7 +170,7 @@ const EVENTS = [
         id: 1,
         name: 'How Elm Powers Angular 4',
         presenter: 'Murphy Randle',
-        duration: 2,
+        duration: '2',
         level: 'Intermediate',
         abstract: `We all know that Angular is written in Elm, but did you
               know how the source code is really written? In this exciting look
@@ -181,7 +182,7 @@ const EVENTS = [
         id: 2,
         name: 'Angular and React together',
         presenter: 'Jamison Dance',
-        duration: 2,
+        duration: '2',
         level: 'Intermediate',
         abstract: `React v449.6 has just been released. Let's see how to use 
               this new version with Angular to create even more impressive applications.`,
@@ -191,7 +192,7 @@ const EVENTS = [
         id: 3,
         name: 'Redux Woes',
         presenter: 'Rob Wormald',
-        duration: 1,
+        duration: '1',
         level: 'Intermediate',
         abstract: `Everyone is using Redux for everything from Angular to React to 
               Excel macros, but you're still having trouble grasping it? We'll take a look
@@ -203,7 +204,7 @@ const EVENTS = [
         id: 4,
         name: 'ng-wat again!!',
         presenter: 'Shai Reznik',
-        duration: 1,
+        duration: '1',
         level: 'Beginner',
         abstract: `Let's take a look at some of the stranger pieces of Angular 4,
               including neural net nets, Android in Androids, and using pipes with actual pipes.`,
@@ -213,7 +214,7 @@ const EVENTS = [
         id: 5,
         name: 'Dressed for Success',
         presenter: 'Ward Bell',
-        duration: 2,
+        duration: '2',
         level: 'Beginner',
         abstract: `Being a developer in 2037 is about more than just writing bug-free code. 
               You also have to look the part. In this amazing expose, Ward will talk you through
@@ -225,7 +226,7 @@ const EVENTS = [
         id: 6,
         name: "These aren't the directives you're looking for",
         presenter: 'John Papa',
-        duration: 2,
+        duration: '2',
         level: 'Intermediate',
         abstract: `Coinciding with the release of Star Wars Episode 18, this talk will show how
               to use directives in your Angular 4 development while drawing lessons from the new movie,
@@ -237,7 +238,7 @@ const EVENTS = [
   {
     id: 4,
     name: 'UN Angular Summit',
-    date: '6/10/2037',
+    date: new Date('6/10/2037'),
     time: '8:00 am',
     price: 800.0,
     imageUrl: '/assets/images/basic-shield.png',
@@ -251,7 +252,7 @@ const EVENTS = [
         id: 1,
         name: 'Diversity in Tech',
         presenter: 'Sir Dave Smith',
-        duration: 2,
+        duration: '2',
         level: 'Beginner',
         abstract: `Yes, we all work with cyborgs and androids and Martians, but 
               we probably don't realize that sometimes our internal biases can make it difficult for
@@ -263,7 +264,7 @@ const EVENTS = [
         id: 2,
         name: 'World Peace and Angular',
         presenter: 'US Secretary of State Zach Galifianakis',
-        duration: 2,
+        duration: '2',
         level: 'Beginner',
         abstract: `Angular has been used in most of the major peace brokering that has
               happened in the last decade, but there is still much we can do to remove all
@@ -274,7 +275,7 @@ const EVENTS = [
         id: 3,
         name: 'Using Angular with Androids',
         presenter: 'Dan Wahlin',
-        duration: 3,
+        duration: '3',
         level: 'Advanced',
         abstract: `Androids may do everything for us now, allowing us to spend all day playing 
               the latest Destiny DLC, but we can still improve the massages they give and the handmade
@@ -286,7 +287,7 @@ const EVENTS = [
   {
     id: 5,
     name: 'ng-vegas',
-    date: '2/10/2037',
+    date: new Date('2/10/2037'),
     time: '9:00 am',
     price: 400.0,
     imageUrl: '/assets/images/ng-vegas.png',
@@ -300,7 +301,7 @@ const EVENTS = [
         id: 1,
         name: 'Gambling with Angular',
         presenter: 'John Papa',
-        duration: 1,
+        duration: '1',
         level: 'Intermediate',
         abstract: `No, this talk isn't about slot machines. We all know that 
               Angular is used in most waiter-bots and coke vending machines, but
@@ -313,7 +314,7 @@ const EVENTS = [
         id: 2,
         name: 'Angular 4 in 60ish Minutes',
         presenter: 'Dan Wahlin',
-        duration: 2,
+        duration: '2',
         level: 'Beginner',
         abstract: `Get the skinny on Angular 4 for anyone new to this great new technology.
               Dan Wahlin will show you how you can get started with Angular in 60ish minutes, 
