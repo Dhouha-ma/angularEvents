@@ -5,7 +5,7 @@ import { restrictedWords } from '../shared/restricted-words.validator';
 
 @Component({
   templateUrl: './create.session.component.html',
-  selector:'create-session',
+  selector: 'create-session',
   styles: [
     `
       em {
@@ -34,8 +34,8 @@ import { restrictedWords } from '../shared/restricted-words.validator';
   ],
 })
 export class CreateSessionComponent implements OnInit {
-  @Output() saveNewSession = new EventEmitter()
-  @Output() cancelAddSession = new EventEmitter()
+  @Output() saveNewSession = new EventEmitter();
+  @Output() cancelAddSession = new EventEmitter();
 
   newSessionForm: FormGroup;
   name: FormControl;
@@ -74,10 +74,10 @@ export class CreateSessionComponent implements OnInit {
       abstract: formValues.abstract,
       voters: [],
     };
-    this.saveNewSession.emit(session)
+    this.saveNewSession.emit(session);
   }
 
-  cancel(){
-    this.cancelAddSession.emit()
+  cancel() {
+    this.cancelAddSession.emit();
   }
 }

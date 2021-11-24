@@ -6,5 +6,5 @@ import { ISession } from '../shared/event.model';
   selector: 'session-list',
 })
 export class SessionlistComponent {
-    @Input() sessions:ISession[]
+  @Input() sessions: ISession[];
 }
