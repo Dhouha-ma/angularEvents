@@ -24,6 +24,7 @@ import { JQ_TOKEN } from './common/jQuery.service';
 import { ModalTriggerDirective } from './common/modalTrigger.directive';
 import { UpVoteComponent } from './events/event-details/upvote.component';
 import { VoterService } from './events/event-details/voter.service';
+import { LocationValidator } from './events/location-validator.directive';
 
 let toastr: Toastr = window['toastr'];
 let jQuery: Toastr = window['$'];
@@ -49,13 +50,14 @@ let jQuery: Toastr = window['$'];
     DurationPipe,
     SimpleModalComponent,
     ModalTriggerDirective,
+    LocationValidator,
     UpVoteComponent,
   ],
   providers: [
     EventService,
     { provide: TOASTR_TOKEN, useValue: toastr },
     { provide: JQ_TOKEN, useValue: jQuery },
-    EventRouteActivator,
+    EventRouteActivator,  
     EventListResolver,
     AuthService,
     VoterService,
