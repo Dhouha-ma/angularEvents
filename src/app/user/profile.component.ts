@@ -78,4 +78,10 @@ export class ProfileComponent implements OnInit {
   validateFirstName() {
     return this.firstName.valid || this.firstName.touched;
   }
+
+  logout() {
+    this.authService.logout().subscribe(() => {
+      this.router.navigate(['/user/login']);
+    });
+  }
 }
