@@ -3,7 +3,7 @@ import { Error404Component } from './app/errors/404.component';
 import { CreateEventComponent } from './app/events/create-event.component';
 import { CreateSessionComponent } from './app/events/event-details/create.session.component';
 import { EventDetailsComponent } from './app/events/event-details/event-details.component';
-import { EventRouteActivator } from './app/events/event-details/event-route-activator.service';
+import { EventResolver } from './app/events/event-resolver.service';
 import { EventListResolver } from './app/events/events-list-resolver.service';
 import { EventsListComponent } from './app/events/events-list.component';
 
@@ -21,7 +21,7 @@ export const appRoutes: Routes = [
   {
     path: 'events/:id',
     component: EventDetailsComponent,
-    canActivate: [EventRouteActivator],
+    resolve: { event: EventResolver },
   },
   {
     path: 'events/session/new',

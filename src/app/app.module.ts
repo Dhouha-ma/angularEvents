@@ -11,7 +11,6 @@ import { RouterModule } from '@angular/router';
 import { appRoutes } from 'src/routes';
 import { CreateEventComponent } from './events/create-event.component';
 import { Error404Component } from './errors/404.component';
-import { EventRouteActivator } from './events/event-details/event-route-activator.service';
 import { EventListResolver } from './events/events-list-resolver.service';
 import { AuthService } from './user/auth.service';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
@@ -25,7 +24,8 @@ import { ModalTriggerDirective } from './common/modalTrigger.directive';
 import { UpVoteComponent } from './events/event-details/upvote.component';
 import { VoterService } from './events/event-details/voter.service';
 import { LocationValidator } from './events/location-validator.directive';
-import { HttpClientModule } from '@angular/common/http'
+import { HttpClientModule } from '@angular/common/http';
+import { EventResolver } from './events/event-resolver.service';
 
 let toastr: Toastr = window['toastr'];
 let jQuery: Toastr = window['$'];
@@ -59,7 +59,7 @@ let jQuery: Toastr = window['$'];
     EventService,
     { provide: TOASTR_TOKEN, useValue: toastr },
     { provide: JQ_TOKEN, useValue: jQuery },
-    EventRouteActivator,  
+    EventResolver,
     EventListResolver,
     AuthService,
     VoterService,
