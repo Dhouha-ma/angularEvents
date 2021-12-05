@@ -26,7 +26,7 @@ import { AuthService } from '../user/auth.service';
   ],
 })
 export class NavBarComponent {
-  searchTerm: string = '';
+  searchTerm = '';
   foundSessions: ISession[];
 
   constructor(public auth: AuthService, private eventService: EventService) {}

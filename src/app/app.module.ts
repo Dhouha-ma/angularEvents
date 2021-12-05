@@ -27,8 +27,8 @@ import { LocationValidator } from './events/location-validator.directive';
 import { HttpClientModule } from '@angular/common/http';
 import { EventResolver } from './events/event-resolver.service';
 
-let toastr: Toastr = window['toastr'];
-let jQuery: Toastr = window['$'];
+const toastr: Toastr = window['toastr'];
+const jQuery: Toastr = window['$'];
 
 @NgModule({
   imports: [

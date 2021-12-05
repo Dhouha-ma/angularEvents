@@ -21,7 +21,7 @@ export class EventService {
   }
 
   saveEvent(event) {
-    let options = {
+    const options = {
       headers: new HttpHeaders({ 'Content-Type': 'application/json' }),
     };
     return this.http
